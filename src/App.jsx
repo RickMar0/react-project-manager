@@ -7,19 +7,21 @@ function App() {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  const projectData = {
+  const [projectData, setProjectData] = useState({
     title: "",
     description: "",
     dueDate: "",
-  };
+  });
+  
 
   return (
     <>
     <main className="h-dvh flex gap-8">
       <Sidebar setIsEditing={setIsEditing} />
-      {!isEditting 
+      {!isEditing 
         ? <NoProject setIsEditing={setIsEditing} />
-        : <ProjectMenu setIsEditing={setIsEditing} />
+        : <ProjectMenu setIsEditing={setIsEditing} projectData={projectData} setProjectData={setProjectData} />
+
       }
     </main>
     </>
