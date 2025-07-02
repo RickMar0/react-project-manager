@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 
-export default function ProjectMenu({ setIsEditing, setProjectData, projectData }) {
+export default function ProjectMenu({ setIsEditing, setProjectData}) {
 
 
   const projNameRef = useRef(null);
@@ -15,16 +15,15 @@ export default function ProjectMenu({ setIsEditing, setProjectData, projectData 
     };
   
     setProjectData(newData);
-    console.log(newData.title, newData.description, newData.dueDate); // ← logs correct values
   };
   
   return(
     <menu className="flex flex-col items-center justify-center gap-4 my-4 w-full">
       <div className="flex flex-row gap-4 my-2 w-lg items-center justify-end">
-        <button onClick={()=>setIsEditing(false)} className="bg-stone-200">
+        <button onClick={()=>setIsEditing(false)} className="hover:cursor-pointer bg-stone-200">
           Cancel
         </button>
-        <button className="bg-stone-900 text-stone-50 px-4 pt-0.5 pb-1 rounded-sm"
+        <button className="hover:cursor-pointer bg-stone-900 text-stone-50 px-4 pt-0.5 pb-1 rounded-sm"
         onClick={() => {
           handleSave();
           setIsEditing(false);
