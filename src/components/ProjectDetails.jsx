@@ -1,0 +1,34 @@
+export default function ProjectDetails({ projectData, setProjectData, setBtnState, projArray}) {
+
+  return(
+    <div className="flex flex-col items-center justify-center gap-4 my-4 w-full">
+      <div className="flex flex-row gap-4 my-2 w-lg items-center justify-center">
+        <button 
+          className="hover:cursor-pointer px-3 py-1 rounded-3xl border-2"
+          onClick={()=>{setBtnState(false)}}
+        >Close
+        </button>
+        <button 
+          className="bg-stone-700 text-stone-100 hover:cursor-pointer align-middle px-3 py-1 border-2 border-stone-700 rounded-3xl"
+          onClick={()=>{
+            projArray.current = projArray.current.filter(p => p.id !== projectData.id);
+            setProjectData({ title: "", description: "", dueDate: ""}); 
+            setBtnState(false)}}
+        >Delete
+        </button>
+      </div>
+      <div className="flex flex-col items-center justify-center gap-5 my-0 py-0 w-full">
+        <label className="flex flex-col font-bold leading-5 text-[25px] items-center">TITLE
+          <span className="font-normal text-[15px]">{projectData.title}</span>
+        </label>
+        <label className="flex flex-col font-bold leading-5 text-[25px] items-center">DESCRIPTION
+          <span className="font-normal text-[15px]">{projectData.description}</span>
+        </label>
+        <label className="flex flex-col font-bold leading-5 text-[25px] items-center">DUE DATE
+          <span className=" my-0 py-0 text-stone-400 text-[10px]">(YYYY-MM-DD)</span>
+          <span className="font-normal text-[15px]">{projectData.dueDate}</span>
+        </label>
+      </div>
+    </div>
+  );
+};

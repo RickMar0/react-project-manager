@@ -1,6 +1,6 @@
 import noProjectsImage from '../assets/no-projects.png';
 
-export default function NoProject({setIsEditing}) {
+export default function NoProject({startEditing}) {
 
 
 
@@ -15,7 +15,7 @@ export default function NoProject({setIsEditing}) {
       </h3>
       <button
       className="px-6 py-2 rounded-md bg-stone-800 text-stone-50 hover:bg-stone-950 my-0 hover:cursor-pointer" 
-      onClick={() => setIsEditing(true)}>
+      onClick={() => startEditing()}>
         Create new project
       </button>
     </div>
