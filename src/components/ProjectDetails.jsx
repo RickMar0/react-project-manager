@@ -1,4 +1,4 @@
-export default function ProjectDetails({ projectData, setProjectData, setBtnState, projArray}) {
+export default function ProjectDetails({ projectData, setBtnState, projArray, startEditing, setDummy}) {
 
   return(
     <div className="flex flex-col items-center justify-center gap-4 my-4 w-full">
@@ -11,9 +11,11 @@ export default function ProjectDetails({ projectData, setProjectData, setBtnStat
         <button 
           className="bg-stone-700 text-stone-100 hover:cursor-pointer align-middle px-3 py-1 border-2 border-stone-700 rounded-3xl"
           onClick={()=>{
-            projArray.current = projArray.current.filter(p => p.id !== projectData.id);
-            setProjectData({ title: "", description: "", dueDate: ""}); 
-            setBtnState(false)}}
+            projArray.current = projArray.current.filter(p => p.id !== projectData.id); 
+            setDummy(prev => prev + 1);
+            setBtnState(false);
+            startEditing();
+          }}
         >Delete
         </button>
       </div>

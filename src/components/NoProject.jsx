@@ -2,8 +2,6 @@ import noProjectsImage from '../assets/no-projects.png';
 
 export default function NoProject({startEditing}) {
 
-
-
   return(
     <div className="flex flex-col justify-center items-center gap-4 w-full">
       <img className="w-16 h-16 object-contain mx-auto py-0 my-0" src={noProjectsImage} alt="No projects" />

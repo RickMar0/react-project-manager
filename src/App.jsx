@@ -6,6 +6,8 @@ import { useState, useRef} from "react";
 
 function App() {
 
+  const [dummy, setDummy] = useState(0); 
+
   const [isEditing, setIsEditing] = useState(false);
 
   const [btnState, setBtnState] = useState(false);
@@ -21,7 +23,7 @@ function App() {
   const projArray = useRef([]);
 
   function startEditing() {
-    setProjectData({ title: "", description: "", dueDate: "" , id: 0, }); // clear before editing
+    setProjectData({ title: "", description: "", dueDate: "" }); // clear before editing
     setIsEditing(true);
   };
   
@@ -35,7 +37,7 @@ function App() {
           setBtnState={setBtnState}
           setProjectData={setProjectData}
           projectData={projectData} 
-          projArray={projArray.current} 
+          projArray={projArray} 
           btnState={btnState}
         />
         {!isEditing && !btnState
@@ -54,9 +56,11 @@ function App() {
           : !isEditing && btnState &&
             (<ProjectDetails 
               setBtnState={setBtnState}
-              projectData={projectData} 
-              projArray={projArray.current} 
               setProjectData={setProjectData}
+              startEditing={startEditing}
+              setDummy={setDummy}
+              projectData={projectData} 
+              projArray={projArray} 
             />
           )
         }
