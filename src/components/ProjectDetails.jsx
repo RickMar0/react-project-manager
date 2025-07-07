@@ -31,6 +31,21 @@ export default function ProjectDetails({ projectData, setBtnState, projArray, st
           <span className="font-normal text-[15px]">{projectData.dueDate}</span>
         </label>
       </div>
+      <div>
+        <label>
+          Tasks
+        </label>
+        <button>
+          Add
+        </button>
+        <button>
+          Remove
+        </button>
+      </div>
+      <div>
+        {/*tasks go here, they should be in a list*/}
+        <input></input>
+      </div>
     </div>
   );
 };
