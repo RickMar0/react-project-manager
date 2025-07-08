@@ -30,7 +30,7 @@ function App() {
 
   return (
     <>
-      <main className="h-dvh flex gap-8">
+      <main className="h-dvh flex">
         <Sidebar 
           setIsEditing={setIsEditing}
           startEditing={startEditing}

@@ -23,7 +23,7 @@ Project's management application
   - Show a list of tasks associated with the project
   - Facilitate the adding/removal of tasks through a form and button respectively
   - Again manage your tasks state associated with each project, likely in the App component as well
-
+==================================
 
 
 tailwind classes:

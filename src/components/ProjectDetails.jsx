@@ -1,4 +1,26 @@
+import { useState,useRef } from "react"; 
+
 export default function ProjectDetails({ projectData, setBtnState, projArray, startEditing, setDummy}) {
+
+  const [tasks, setTasks] = useState("");
+  const taskInputRef = useRef(null);
+  
+  // This function handles the tasks for the project.
+  function handleTasks() {
+
+
+    const handleAdd = () => {
+      const value = taskInputRef.current?.value;
+      if (value) {
+        setTasks(prev => [...prev, value]);
+        taskInputRef.current.value = ""; // Clear the input field after adding
+      }
+    }
+
+    const handleRemove = () => {
+      b
+    };
+}
 
   return(
     <div className="flex flex-col items-center justify-center gap-4 my-4 w-full">
@@ -31,20 +53,28 @@ export default function ProjectDetails({ projectData, setBtnState, projArray, st
           <span className="font-normal text-[15px]">{projectData.dueDate}</span>
         </label>
       </div>
-      <div>
+      <div className=" flex flex-col font-bold text-[15px] my-2 w-full ml-5">
         <label>
-          Tasks
+          Tasks:
         </label>
-        <button>
+        {}
+      </div>
+      <div className="flex">
+        <input
+          type="text" 
+          placeholder=" insert task"
+          className="border-2 rounded-md mr-7 bg-amber-100"
+          ref={taskInputRef}>
+        </input>
+        <button 
+          className="hover:cursor-pointer mr-2 px-3 py-1 rounded-3xl border-2"
+          onClick={() => handleAdd()}>
           Add
         </button>
-        <button>
+        <button 
+          className="bg-stone-700 text-stone-100 hover:cursor-pointer align-middle px-3 py-1 border-2 border-stone-700 rounded-3xl">
           Remove
         </button>
-      </div>
-      <div>
-        {/*tasks go here, they should be in a list*/}
-        <input></input>
       </div>
     </div>
   );
