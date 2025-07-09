@@ -9,7 +9,21 @@ export default function ProjectMenu({ setIsEditing, projectData, setProjectData,
   const [formData, setFormData] = useState(projectData);
 
 
+/**
+handleSave Function
+* This function validates the form data and saves the 
+  project details. It ensures that all fields 
+  (title, description, and due date) are filled before proceeding.
 
+* If validation passes: 
+  - it updates the project data state
+  - adds the new project to the project array
+  - resets the form fields
+  - then exits the editing mode.
+
+* If validation fails: 
+  - it displays an error message to the user.
+*/
   const handleSave = () => {
   
     if (
@@ -24,6 +38,7 @@ export default function ProjectMenu({ setIsEditing, projectData, setProjectData,
         title: formData.title,
         description: formData.description,
         dueDate: formData.dueDate,
+        tasks: [],
       });
       setFormData({ title: "", description: "", dueDate: "", });
       setShowError(false);

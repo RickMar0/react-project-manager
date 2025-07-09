@@ -12,18 +12,21 @@ function App() {
 
   const [btnState, setBtnState] = useState(false);
 
+  const taskInputRef = useRef(null);
+
   const [projectData, setProjectData] = useState({
     title: "",
     description: "",
     dueDate: "",
     id: 0,
+    tasks: []
   });
 
   const projCounter = useRef(0);
   const projArray = useRef([]);
 
   function startEditing() {
-    setProjectData({ title: "", description: "", dueDate: "" }); // clear before editing
+    setProjectData({ title: "", description: "", dueDate: "", id: undefined, tasks:[] }); 
     setIsEditing(true);
   };
   
@@ -60,7 +63,8 @@ function App() {
               startEditing={startEditing}
               setDummy={setDummy}
               projectData={projectData} 
-              projArray={projArray} 
+              projArray={projArray}
+              taskInputRef={taskInputRef}
             />
           )
         }
