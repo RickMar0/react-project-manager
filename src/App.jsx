@@ -6,7 +6,7 @@ import { useState, useRef} from "react";
 
 function App() {
 
-  const [dummy, setDummy] = useState(0); 
+  const [clickedProject, setClickedProject] = useState(0); 
 
   const [isEditing, setIsEditing] = useState(false);
 
@@ -39,6 +39,7 @@ function App() {
           startEditing={startEditing}
           setBtnState={setBtnState}
           setProjectData={setProjectData}
+          setClickedProject={setClickedProject}
           projectData={projectData} 
           projArray={projArray} 
           btnState={btnState}
@@ -61,7 +62,7 @@ function App() {
               setBtnState={setBtnState}
               setProjectData={setProjectData}
               startEditing={startEditing}
-              setDummy={setDummy}
+              setClickedProject={setClickedProject}
               projectData={projectData} 
               projArray={projArray}
               taskInputRef={taskInputRef}

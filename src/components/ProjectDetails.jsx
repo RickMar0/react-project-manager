@@ -2,30 +2,35 @@ import { useState,useRef } from "react";
 
 export default function ProjectDetails({ projectData, setProjectData, setBtnState, projArray, startEditing, setDummy, taskInputRef}) {
 
+  console.log(projArray.current);
+
+  let i = projectData.id; 
+
+  console.log(i);
 /*
 - Handles the addition of a new task to the project data.
 - Retrieves the value from the input field, updates the project data state
   by appending the new task, and clears the input field afterward.
 */
   function handleAdd() {
-    const value = taskInputRef.current?.value;
+    let value = taskInputRef.current.value;
     if (value) {
-      projArray.current.tasks.push(value); // Add the new task to the tasks array
-      taskInputRef.current.value = ""; // Clear the input field after adding
-      console.log("Task added:", value, projArray.current);
+      projArray.current[i].tasks.push(value);
+
+      setDummy(prev => prev + 1);
     }
   }
-
 
 /*
 - Removes a task from the list of tasks based on its index.
 - Filters out the task at the specified index and updates the state 
   with the new list of tasks.
 */
-  function handleRemove(i) {
-    const newTasks = projectData.tasks .filter((_, index) => index !== i);
-    setProjectData(prev => ({...prev, tasks: newTasks}));
-  }
+  function handleRemove(taskIndex) {
+  projArray.current[i].tasks.splice(taskIndex, 1);
+  setDummy(prev => prev + 1);
+}
+
   
 
   return(
@@ -67,7 +72,7 @@ export default function ProjectDetails({ projectData, setProjectData, setBtnStat
           ? <p>no tasks are present</p>  // show this message
           :     // otherwise, show the tasks in a list
           <ol>
-            {projectData.tasks .map((element, i) => (
+            {projectData.tasks.map((element, i) => (
               <div className="flex gap-5 items-center justify-between my-3" key={i}>
                 <li key={i}>{element}</li>
                 <button 
@@ -90,7 +95,11 @@ export default function ProjectDetails({ projectData, setProjectData, setBtnStat
         </input>
         <button 
           className="hover:cursor-pointer mr-2 px-3 py-1 rounded-3xl border-2"
-          onClick={() => handleAdd()}>
+          onClick={() => {
+            handleAdd();
+            taskInputRef.current.value = "";}
+          }
+        >
           Add
         </button>
       </div>
